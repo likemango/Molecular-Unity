@@ -22,10 +22,9 @@ GameObject:
   - component: {fileID: 33907846609500644}
   - component: {fileID: 23225941787280434}
   - component: {fileID: 54677055569037652}
-  - component: {fileID: 135028335625605342}
-  - component: {fileID: 135217483584774038}
+  - component: {fileID: 65098215651721272}
   m_Layer: 0
-  m_Name: BondSingle
+  m_Name: Single Bond
   m_TagString: Bond
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,8 +100,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &135028335625605342
-SphereCollider:
+--- !u!65 &65098215651721272
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -111,17 +110,5 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: -1, z: 0}
---- !u!135 &135217483584774038
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1474411645488378}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0, y: 0, z: 0}

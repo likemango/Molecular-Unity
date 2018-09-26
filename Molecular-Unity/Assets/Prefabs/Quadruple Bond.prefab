@@ -22,8 +22,6 @@ GameObject:
   - component: {fileID: 33620204453137126}
   - component: {fileID: 23022821959106516}
   - component: {fileID: 54873108185480016}
-  - component: {fileID: 135524992371125424}
-  - component: {fileID: 135895037846280404}
   m_Layer: 0
   m_Name: Single Bond
   m_TagString: Bond
@@ -42,8 +40,6 @@ GameObject:
   - component: {fileID: 33032796634049036}
   - component: {fileID: 23612303567759578}
   - component: {fileID: 54578378846660492}
-  - component: {fileID: 135198750679135308}
-  - component: {fileID: 135899868509408936}
   m_Layer: 0
   m_Name: Single Bond
   m_TagString: Bond
@@ -59,6 +55,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4861608789001376}
+  - component: {fileID: 65019776643133464}
   m_Layer: 0
   m_Name: Quadruple Bond
   m_TagString: Bond
@@ -77,8 +74,6 @@ GameObject:
   - component: {fileID: 33517863208938798}
   - component: {fileID: 23748426583398480}
   - component: {fileID: 54784062545595916}
-  - component: {fileID: 135257052759971348}
-  - component: {fileID: 135338373678266568}
   m_Layer: 0
   m_Name: Single Bond
   m_TagString: Bond
@@ -97,8 +92,6 @@ GameObject:
   - component: {fileID: 33092788215892452}
   - component: {fileID: 23076409503186778}
   - component: {fileID: 54464173177470120}
-  - component: {fileID: 135835197583222384}
-  - component: {fileID: 135676432050755596}
   m_Layer: 0
   m_Name: Single Bond
   m_TagString: Bond
@@ -403,99 +396,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &135198750679135308
-SphereCollider:
+--- !u!65 &65019776643133464
+BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1359227742481972}
+  m_GameObject: {fileID: 1439163242489126}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: -1, z: 0}
---- !u!135 &135257052759971348
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1523540552950710}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: -1, z: 0}
---- !u!135 &135338373678266568
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1523540552950710}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!135 &135524992371125424
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1154123671401378}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: -1, z: 0}
---- !u!135 &135676432050755596
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1986524063624266}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!135 &135835197583222384
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1986524063624266}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: -1, z: 0}
---- !u!135 &135895037846280404
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1154123671401378}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!135 &135899868509408936
-SphereCollider:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1359227742481972}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.25
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 0.1, y: 1.5, z: 0.7}
+  m_Center: {x: 0, y: 0, z: 0}

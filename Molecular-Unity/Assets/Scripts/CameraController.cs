@@ -13,7 +13,7 @@ using UnityEngine;
 public class CameraController : MonoBehaviour {
 
     private Transform cameraMain;
-    private Transform cameraPivot;
+    public Transform cameraPivot;
 
     private Vector3 localRotation;
     private Vector3 localPosition;
@@ -35,21 +35,30 @@ public class CameraController : MonoBehaviour {
         this.cameraPivot = this.transform.parent;
     }
 
+    void Update()
+    {
+        RaycastHit hit;
+        if (Input.mousePosition != null && Input.GetMouseButtonDown(1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, maxCameraDistance))
+            {
+                if (hit.transform != null)
+                {
+                    cameraPivot.position = hit.collider.bounds.center;
+                }
+            }
+     }
+    }
+
     void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             cameraDisabled = !cameraDisabled; // disables and enables the camera
         }
-
-        /* Possible code for translation of the focal point
-        if (Input.GetButton("Mouse 0"))
-        {
-            localPosition.x += Input.GetAxis("Mouse X") * mouseSensitivity;
-            localPosition.y += Input.GetAxis("Mouse Y") * mouseSensitivity;
-        }
-        */
-
+        
         if (!cameraDisabled)
         {
             // Rotation of the Camera based on Mouse Coordinates
@@ -72,7 +81,7 @@ public class CameraController : MonoBehaviour {
         // Setting actual camera roations and positions
         Quaternion cameraLocation = Quaternion.Euler(localRotation.y, localRotation.x, 0f); // Sets pitch and yaw of euler angles, z=0 due to no rotation, used to avoid gimble lock
         this.cameraPivot.rotation = Quaternion.Lerp(this.cameraPivot.rotation, cameraLocation, Time.deltaTime * orbitDampening); // Linear interpolation between current roation of camera at the start of the frame toward the target roation that was set above
-        this.cameraPivot.position = localPosition;
+        //this.cameraPivot.position = localPosition;
 
         // Setting camera zoom
         if (this.cameraMain.localPosition.z != this.cameraDistance * -1f)
