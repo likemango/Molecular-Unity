@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23619003485594954}
   - component: {fileID: 135131494020271116}
   - component: {fileID: 54213922785215554}
+  - component: {fileID: 114120372347967664}
   m_Layer: 0
   m_Name: Bromine
   m_TagString: Element
@@ -100,6 +101,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114120372347967664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1761577597114050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5aa52ae6a5cf643bcdb7f2fad02550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementName: Bromine
+  symbol: Br
+  atomicMass: 79.904
+  atomicNumber: 35
 --- !u!135 &135131494020271116
 SphereCollider:
   m_ObjectHideFlags: 1

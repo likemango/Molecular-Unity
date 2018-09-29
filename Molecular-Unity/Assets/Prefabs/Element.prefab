@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 23488852586526922}
   - component: {fileID: 135185090296961268}
   - component: {fileID: 54491762875729212}
+  - component: {fileID: 114395095925003704}
   m_Layer: 0
   m_Name: Element
   m_TagString: Element
@@ -100,6 +101,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &114395095925003704
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1405645922601578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b5aa52ae6a5cf643bcdb7f2fad02550, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementName: Element
+  symbol: E
+  atomicMass: 0
+  atomicNumber: 0
 --- !u!135 &135185090296961268
 SphereCollider:
   m_ObjectHideFlags: 1

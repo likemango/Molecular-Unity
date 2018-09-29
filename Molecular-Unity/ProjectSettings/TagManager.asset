@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Element
   - Bond
+  - Hydrogen
+  - Oxygen
+  - Camera Pivot
   layers:
   - Default
   - TransparentFX

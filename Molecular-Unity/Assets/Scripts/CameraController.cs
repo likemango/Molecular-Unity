@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour {
     private Vector3 localPosition;
     private float cameraDistance = 10f;
     private float orbitDampening = 10f; // how long it takes for the camera to reach it destination
-    private float scrollDampening = 6f; // the larger the number the less time it takes for the camera to reach it destinatio
+    //private float scrollDampening = 6f; // the larger the number the less time it takes for the camera to reach it destinatio
 
     //[SerializeField]
     private static float mouseSensitivity = 5f; // how much mouse movement across the screen
@@ -149,7 +149,7 @@ public class CameraController : MonoBehaviour {
     private void moveCameraPosition()
     {
         RaycastHit hit;
-        if (Input.mousePosition != null && Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 

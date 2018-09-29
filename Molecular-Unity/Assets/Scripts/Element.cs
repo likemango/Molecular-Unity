@@ -2,14 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Element : MonoBehaviour {
-
+public class Element : MonoBehaviour
+{
     [SerializeField]
     private string elementName;
+    [SerializeField]
+    private string symbol;
     [SerializeField]
     private double atomicMass;
     [SerializeField]
     private double atomicNumber;
+
+    public Element(string elementName, double atomicMass, double atomicNumber, string symbol)
+    {
+        ElementName = elementName;
+        AtomicMass = atomicMass;
+        AtomicNumber = atomicNumber;
+        Symbol = symbol;
+    }   
 
     public string ElementName
     {
@@ -50,10 +60,16 @@ public class Element : MonoBehaviour {
         }
     }
 
-    protected Element(string elementName, double atomicMass, double atomicNumber)
+    public string Symbol
     {
-        ElementName = elementName;
-        AtomicMass = atomicMass;
-        AtomicNumber = atomicNumber;
+        get
+        {
+            return symbol;
+        }
+
+        set
+        {
+            symbol = value;
+        }
     }
 }
