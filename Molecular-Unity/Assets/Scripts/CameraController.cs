@@ -12,20 +12,87 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    private Transform cameraMain;
-    public Transform cameraPivot;
 
+    private Transform cameraMain;
+    private Transform cameraPivot;
     private Vector3 localRotation;
     private Vector3 localPosition;
     private float cameraDistance = 10f;
+    private float orbitDampening = 10f; // how long it takes for the camera to reach it destination
+    private float scrollDampening = 6f; // the larger the number the less time it takes for the camera to reach it destinatio
 
-    public float mouseSensitivity = 5f; // how much mouse movement across the screen
-    public float scrollSensitivity = 2f;
-    public float orbitDampening = 10f; // how long it takes for the camera to reach it destination
-    public float scrollDampening = 6f; // the larger the number the less time it takes for the camera to reach it destination
-    public float minCameraDistance = 1f;
-    public float maxCameraDistance = 100f;
-    public bool cameraDisabled = false;
+    //[SerializeField]
+    private static float mouseSensitivity = 5f; // how much mouse movement across the screen
+    private static float scrollSensitivity = 2f;
+    private static float minCameraDistance = 1f;
+    private static float maxCameraDistance = 100f;
+    private bool cameraDisabled = false;
+
+    // Changeable properties that can be used for control design
+    public static float MouseSensitivity
+    {
+        get
+        {
+            return mouseSensitivity;
+        }
+
+        set
+        {
+            mouseSensitivity = value;
+        }
+    }
+
+    public static float ScrollSensitivity
+    {
+        get
+        {
+            return scrollSensitivity;
+        }
+
+        set
+        {
+            scrollSensitivity = value;
+        }
+    }
+
+    public static float MinCameraDistance
+    {
+        get
+        {
+            return minCameraDistance;
+        }
+
+        set
+        {
+            minCameraDistance = value;
+        }
+    }
+
+    public static float MaxCameraDistance
+    {
+        get
+        {
+            return maxCameraDistance;
+        }
+
+        set
+        {
+            maxCameraDistance = value;
+        }
+    }
+
+    public bool CameraDisabled
+    {
+        get
+        {
+            return cameraDisabled;
+        }
+
+        set
+        {
+            cameraDisabled = value;
+        }
+    }
 
 
     // Use this for initialization
@@ -37,44 +104,33 @@ public class CameraController : MonoBehaviour {
 
     void Update()
     {
-        RaycastHit hit;
-        if (Input.mousePosition != null && Input.GetMouseButtonDown(1))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        moveCameraPosition();
 
-            if (Physics.Raycast(ray, out hit, maxCameraDistance))
-            {
-                if (hit.transform != null)
-                {
-                    cameraPivot.position = hit.collider.bounds.center;
-                }
-            }
-     }
     }
 
     void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
-            cameraDisabled = !cameraDisabled; // disables and enables the camera
+            CameraDisabled = !CameraDisabled; // disables and enables the camera
         }
         
-        if (!cameraDisabled)
+        if (!CameraDisabled)
         {
             // Rotation of the Camera based on Mouse Coordinates
             if (Input.GetAxis("Mouse X") != 0 && Input.GetButton("Mouse 1") || Input.GetAxis("Mouse Y") != 0 && Input.GetButton("Mouse 1")) // only triggers when the mouse is not stationary
             {
-                localRotation.x += Input.GetAxis("Mouse X") * mouseSensitivity;
-                localRotation.y += Input.GetAxis("Mouse Y") * mouseSensitivity;
+                localRotation.x += Input.GetAxis("Mouse X") * MouseSensitivity;
+                localRotation.y -= Input.GetAxis("Mouse Y") * MouseSensitivity;
             }
 
             // Scrolling Input from the Scroll Wheel
             if (Input.GetAxis("Mouse ScrollWheel") != 0f)
             {
-                float scrollAmount = Input.GetAxis("Mouse ScrollWheel") * scrollSensitivity;
+                float scrollAmount = Input.GetAxis("Mouse ScrollWheel") * ScrollSensitivity;
                 scrollAmount *= (this.cameraDistance * 0.3f);  // allows for scrolling faster as far away and slower the closer.
                 this.cameraDistance += scrollAmount * -1f; // -1 due to the way Unity detects the axis on the mouse scroll wheel
-                this.cameraDistance = Mathf.Clamp(this.cameraDistance, minCameraDistance, maxCameraDistance); // min and max camera is allowed to zoom
+                this.cameraDistance = Mathf.Clamp(this.cameraDistance, MinCameraDistance, MaxCameraDistance); // min and max camera is allowed to zoom
             }
         }
 
@@ -87,6 +143,23 @@ public class CameraController : MonoBehaviour {
         if (this.cameraMain.localPosition.z != this.cameraDistance * -1f)
         {
             this.cameraMain.localPosition = new Vector3(0f, 0f, this.cameraDistance * -1f);
+        }
+    }
+
+    private void moveCameraPosition()
+    {
+        RaycastHit hit;
+        if (Input.mousePosition != null && Input.GetMouseButtonDown(1))
+        {
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit, MaxCameraDistance))
+            {
+                if (hit.transform != null)
+                {
+                    cameraPivot.position = hit.collider.bounds.center;
+                }
+            }
         }
     }
 }

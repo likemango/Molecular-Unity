@@ -221,14 +221,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16d412a7add899643af9d6f833c7d174, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraPivot: {fileID: 0}
-  mouseSensitivity: 5
-  scrollSensitivity: 2
-  orbitDampening: 10
-  scrollDampening: 6
-  minCameraDistance: 1
-  maxCameraDistance: 100
-  cameraDisabled: 0
+--- !u!1 &951162672 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1576652123264442, guid: b8fb3b223392a6d48892177d29887578,
+    type: 2}
+  m_PrefabInternal: {fileID: 1194113298}
+--- !u!114 &951162673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 951162672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a9dca36616d2ce49bc0707ffc422992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementName: 
+  atomicMass: 0
+  atomicNumber: 0
 --- !u!1 &963949920
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,6 +495,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2129925719}
+  - component: {fileID: 2129925720}
   m_Layer: 0
   m_Name: Camera Pivot
   m_TagString: Untagged
@@ -505,3 +517,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &2129925720
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2129925718}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 50
+  m_Center: {x: 0, y: 0, z: 0}
