@@ -105,7 +105,6 @@ public class CameraController : MonoBehaviour {
     void Update()
     {
         moveCameraPosition();
-
     }
 
     void LateUpdate()
@@ -145,7 +144,8 @@ public class CameraController : MonoBehaviour {
             this.cameraMain.localPosition = new Vector3(0f, 0f, this.cameraDistance * -1f);
         }
     }
-
+    
+    // Moves camera position to cneter around an element or a bond
     private void moveCameraPosition()
     {
         RaycastHit hit;

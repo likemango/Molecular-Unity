@@ -1,21 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.UI;
-//Does nothing yet
+using UnityEngine.UI;
+//Updates UI temp
+ 
 public class GameController : MonoBehaviour
 {
-
-  //  public Text formula;
-    //public Molecule molecule;
+    public Text m_MyText;
 
     void Start()
     {
-        //formula = GetComponent<Text>();
+        m_MyText.text = gameObject.GetComponent<Molecule>().MolecularFormula;
     }
 
     void LateUpdate()
     {
-
+        m_MyText.text = gameObject.GetComponent<Molecule>().MolecularFormula;
     }
 }

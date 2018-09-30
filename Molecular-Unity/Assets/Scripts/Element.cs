@@ -1,9 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Element : MonoBehaviour
-{
+{ 
     [SerializeField]
     private string elementName;
     [SerializeField]
@@ -72,4 +73,5 @@ public class Element : MonoBehaviour
             symbol = value;
         }
     }
+
 }

@@ -7,6 +7,7 @@ public class Molecule : MonoBehaviour {
 
     private List<GameObject> elements = new List<GameObject>();
     private List<GameObject> bonds = new List<GameObject>();
+    private string[,] elementData = new string[11,3];
     private int numberElements = 0;
     private string molecularFormula = "";
     private bool changeInFormula;
@@ -14,16 +15,7 @@ public class Molecule : MonoBehaviour {
     void LateUpdate()
     {
         UpdateElementsOnMolecule(GameObject.FindGameObjectWithTag("Camera Pivot").transform.position, CameraController.MaxCameraDistance);
-        //UpdateMolecularFormula();
-        /* 
-        foreach (GameObject element in elements)
-            {
-               print(element.GetComponent<Element>().ElementName);
-            }*/
-
-        print(molecularFormula);
-
-
+        //print(molecularFormula);
     }
 
     public void UpdateElementsOnMolecule(Vector3 center, float radius)
@@ -40,28 +32,62 @@ public class Molecule : MonoBehaviour {
                 elements.Add(hitColliders[i].gameObject);
                 UpdateMolecularFormula();
             }
-            //if (!elements.Contains(hitColliders[i].gameObject))
         }
         numberElements = hitColliders.Length;
     }
 
     public void UpdateMolecularFormula()
     {
-        int H = 0;
-        elements.Sort();
+        molecularFormula = "";
+        int[] moleculeCount = new int[11];
+        string[] moleculeSymbol = new string[11] {"Br", "C", "Cl", "F", "H", "I", "N", "O", "P", "Si","S"};
         foreach (GameObject e in elements)
         {
-            switch (e.GetComponent<Element>().Symbol)
+            switch (e.GetComponent<Element>().Symbol)               
             {
+                case "Br":
+                    moleculeCount[0]++;
+                    break;
+                case "C":
+                    moleculeCount[1]++;
+                    break;
+                case "Cl":
+                    moleculeCount[2]++;
+                    break;
+                case "F":
+                    moleculeCount[3]++;
+                    break;
                 case "H":
-                    H++;
-                break;
-
+                    moleculeCount[4]++;
+                    break;
+                case "I":
+                    moleculeCount[5]++;
+                    break;
+                case "N":
+                    moleculeCount[6]++;
+                    break;
+                case "O":
+                    moleculeCount[7]++;
+                    break;
+                case "P":
+                    moleculeCount[8]++;
+                    break;
+                case "Si":
+                    moleculeCount[9]++;
+                    break;
+                case "S":
+                    moleculeCount[10]++;
+                    break;
             }
-
+        }
+        for (int i = 0; i < moleculeCount.Length; i++)
+        {
+            if (moleculeCount[i] != 0)
+            {
+                molecularFormula += moleculeSymbol[i] + moleculeCount[i];
+            }
         }
     }
-
 
     public List<GameObject> Elements
     {
@@ -86,6 +112,14 @@ public class Molecule : MonoBehaviour {
         set
         {
             bonds = value;
+        }
+    }
+
+    public string MolecularFormula
+    {
+        get
+        {
+            return molecularFormula;
         }
     }
 }
