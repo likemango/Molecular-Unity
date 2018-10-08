@@ -102,11 +102,13 @@ public class CameraController : MonoBehaviour {
         this.cameraPivot = this.transform.parent;
     }
 
+    // Updates the camera position
     void Update()
     {
         moveCameraPosition();
     }
 
+    // After all physics calculations have been done move the camera
     void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift))
