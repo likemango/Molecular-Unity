@@ -89,30 +89,11 @@ public class Molecule : MonoBehaviour {
         }
     }
 
-    public List<GameObject> Elements
+
+    public void sortingthelist()
     {
-        get
-        {
-            return elements;
-        }
+        elements.Sort();
 
-        set
-        {
-            elements = value;
-        }
-    }
-
-    public List<GameObject> Bonds
-    {
-        get
-        {
-            return bonds;
-        }
-
-        set
-        {
-            bonds = value;
-        }
     }
 
     public string MolecularFormula

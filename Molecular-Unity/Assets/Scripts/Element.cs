@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Element : MonoBehaviour
+public class Element : MonoBehaviour, IComparable
 { 
     [SerializeField]
     private string elementName;
@@ -74,4 +74,10 @@ public class Element : MonoBehaviour
         }
     }
 
+
+    //testing IComparable
+    public int CompareTo(object obj)
+    {
+        return AtomicNumber.CompareTo(obj);
+    }
 }
