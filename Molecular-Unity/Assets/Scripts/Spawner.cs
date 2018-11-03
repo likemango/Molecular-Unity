@@ -13,8 +13,8 @@ public class Spawner : MonoBehaviour {
 
     private void Awake()
     {
-        previousMoleculeSelected = premadeMolecules[0];
-        moleculeSelected = premadeMolecules[0];
+        //previousMoleculeSelected = premadeMolecules[0];
+        //moleculeSelected = premadeMolecules[0];
         PopulateList();
     }
 
@@ -34,10 +34,15 @@ public class Spawner : MonoBehaviour {
 
     private bool ShouldSpawn()
     {
-        if (moleculeSelected != previousMoleculeSelected)
+        if (moleculeSelected != previousMoleculeSelected && moleculeSelected != premadeMolecules[0])
         {
             previousMoleculeSelected = moleculeSelected;
             return true;
+        }
+        if (moleculeSelected == premadeMolecules[0])
+        {
+            previousMoleculeSelected = moleculeSelected;
+            return false;
         }
         return false;
     }
@@ -49,10 +54,10 @@ public class Spawner : MonoBehaviour {
 
     public void Dropdown_IndexChanged(int index)
     {
-        if (index != 0)
-        {
+        //if (index != 0)
+        //{
             moleculeSelected = premadeMolecules[index];
-        }
+        //}
         DestroyMolecule();
     }
 
