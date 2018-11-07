@@ -8,6 +8,7 @@ TagManager:
   - Bond
   - Camera Pivot
   - Molecule
+  - Bond Parent
   layers:
   - Default
   - TransparentFX

@@ -1,49 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-
-public class Molecule : MonoBehaviour {
+public class Molecule : MonoBehaviour
+{
 
     private List<GameObject> elements = new List<GameObject>();
-    private List<GameObject> bonds = new List<GameObject>();
-    private string[,] elementData = new string[11,3];
+    //private List<GameObject> bonds = new List<GameObject>();
+    //private string[,] elementData = new string[11, 3];
     private int numberElements = 0;
     private string molecularFormula = "";
-    private bool changeInFormula;
+    //private bool changeInFormula;
+    [SerializeField]
+    private Text moleculeInfoText;
 
     void LateUpdate()
     {
         UpdateElementsOnMolecule(GameObject.FindGameObjectWithTag("Camera Pivot").transform.position, CameraController.MaxCameraDistance);
-        //print(molecularFormula);
+        UpdateMoleculeUIText();
     }
 
-    // Updates the hidden molecule counter
+    /// <summary>
+    /// Updates the elements on molecule.
+    /// </summary>
+    /// <param name="center">The center.</param>
+    /// <param name="radius">The radius.</param>
     public void UpdateElementsOnMolecule(Vector3 center, float radius)
     {
         Collider[] hitColliders = Physics.OverlapSphere(center, radius);
-        if (hitColliders.Length < numberElements)
+        if (hitColliders.Length != numberElements)
         {
             elements.Clear();
-        }
+        }        
         for (int i = 0; i < hitColliders.Length; i++)
         {
             if (hitColliders[i].gameObject.tag == "Element" && !elements.Contains(hitColliders[i].gameObject))
             {
                 elements.Add(hitColliders[i].gameObject);
-               // UpdateMolecularFormula();
+                UpdateMolecularFormula();
             }
         }
         numberElements = hitColliders.Length;
     }
 
-    // Primitive string builder for the molecular formula. 
+    /// <summary>
+    /// Updates the molecular formula.
+    /// </summary>
     public void UpdateMolecularFormula()
     {
-   
-            molecularFormula = "";
-            int[] moleculeCount = new int[11];
-            string[] moleculeSymbol = new string[11] { "Br", "C", "Cl", "F", "H", "I", "N", "O", "P", "Si", "S" };
+        molecularFormula = "";
+        int[] moleculeCount = new int[11];
+        string[] moleculeSymbol = new string[11] { "Br", "C", "Cl", "F", "H", "I", "N", "O", "P", "Si", "S" };
+        if (elements != null)
+        {
             foreach (GameObject e in elements)
             {
                 switch (e.GetComponent<Element>().Symbol)
@@ -83,23 +93,28 @@ public class Molecule : MonoBehaviour {
                         break;
                 }
             }
-
             for (int i = 0; i < moleculeCount.Length; i++)
             {
                 if (moleculeCount[i] != 0)
                 {
                     molecularFormula += moleculeSymbol[i] + moleculeCount[i];
                 }
-           
+
+            }
         }
     }
 
-    public void sortingthelist()
+    private void UpdateMoleculeUIText()
     {
-        elements.Sort();
-
+        moleculeInfoText.text = MolecularFormula;
     }
 
+    /// <summary>
+    /// Gets the molecular formula.
+    /// </summary>
+    /// <value>
+    /// The molecular formula.
+    /// </value>
     public string MolecularFormula
     {
         get

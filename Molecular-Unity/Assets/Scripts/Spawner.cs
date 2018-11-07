@@ -13,8 +13,6 @@ public class Spawner : MonoBehaviour {
 
     private void Awake()
     {
-        //previousMoleculeSelected = premadeMolecules[0];
-        //moleculeSelected = premadeMolecules[0];
         PopulateList();
     }
 
@@ -54,10 +52,7 @@ public class Spawner : MonoBehaviour {
 
     public void Dropdown_IndexChanged(int index)
     {
-        //if (index != 0)
-        //{
-            moleculeSelected = premadeMolecules[index];
-        //}
+        moleculeSelected = premadeMolecules[index];
         DestroyMolecule();
     }
 

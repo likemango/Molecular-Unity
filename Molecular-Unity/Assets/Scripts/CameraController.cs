@@ -21,7 +21,7 @@ public class CameraController : MonoBehaviour {
     private float orbitDampening = 10f; // how long it takes for the camera to reach it destination
     //private float scrollDampening = 6f; // the larger the number the less time it takes for the camera to reach it destinatio
 
-    //[SerializeField]
+    [SerializeField]
     private static float mouseSensitivity = 5f; // how much mouse movement across the screen
     private static float scrollSensitivity = 2f;
     private static float minCameraDistance = 1f;
