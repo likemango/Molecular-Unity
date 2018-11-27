@@ -10,13 +10,14 @@ public class Spawner : MonoBehaviour {
     private string moleculeSelected;
     private string previousMoleculeSelected;
     public Dropdown dropDownMenuGame;
-
+        
     private void Awake()
     {
         PopulateList();
     }
 
-    void Update () {
+    void Update ()
+    {
         if (ShouldSpawn())
         {
             Spawn();

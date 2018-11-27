@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,12 +15,6 @@ public class ElementSelector : MonoBehaviour {
     private Text elementAngle;
     private GameObject elementSelected;
 
-
-    private void Start()
-    {
-    }
-
-
     private void Update()
     {
         GetSelectedElement();
@@ -28,8 +24,9 @@ public class ElementSelector : MonoBehaviour {
     {
         if (elementSelected != null)
         {
-            UpdateTextbox();
+            UpdateTextboxVisablility();
             UpdateUISelectedElement();
+            
         }
     }
 
@@ -53,19 +50,41 @@ public class ElementSelector : MonoBehaviour {
     private void UpdateUISelectedElement()
     {
         elementName.text = elementSelected.name;
-        //elementAngle.text = elementSelected.transform.localRotation.x.ToString();
     }
 
-    private void UpdateTextbox()
+    private void UpdateTextboxVisablility()
     {
         if (elementSelected.tag == "Element")
         {
             //  elementAngleInput.enabled = false;
             elementAngleInput.DeactivateInputField();
         }
-        Debug.Log(elementAngleInput.isActiveAndEnabled);
+        else if (elementSelected.tag == "Bond")
+        {
+            elementAngleInput.ActivateInputField();
+            UpdateTextboxAngle();
+        }
+        //Debug.Log(elementAngleInput.isActiveAndEnabled);
     }
 
+    private void UpdateTextboxAngle()
+    {
+        elementAngle.text = elementSelected.transform.parent.transform.localEulerAngles.z.ToString();
+    }
 
+    public void OnChangeEvent()
+    {
+        try
+        {
+            if (elementSelected.tag == "Bond" && elementAngle)
+            {
+                Vector3 userAngles = new Vector3(0, 0, (float)double.Parse(elementAngleInput.text, CultureInfo.InvariantCulture.NumberFormat));
+                elementSelected.transform.parent.transform.localEulerAngles = userAngles;
+            }
+        }
+        catch(Exception)
+        {
 
+        }
+    }
 }
