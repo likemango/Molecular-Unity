@@ -1,8 +1,17 @@
-﻿using System;
+﻿/* Molecular Unity - Element
+ * Mark Halle 
+ * Element structure for building the molecules
+ * Consists of different properties in an element and a Icomparable
+ */
+
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Element:Consists of a name, symbol, atomicMass, and atomicNumber
+/// </summary>
 public class Element : MonoBehaviour, IComparable
 { 
     [SerializeField]
@@ -14,6 +23,11 @@ public class Element : MonoBehaviour, IComparable
     [SerializeField]
     private double atomicNumber;
 
+    /// <summary></summary>
+    /// <param name="elementName"></param>
+    /// <param name="atomicMass"></param>
+    /// <param name="atomicNumber"></param>
+    /// <param name="symbol"></param>
     public Element(string elementName, double atomicMass, double atomicNumber, string symbol)
     {
         ElementName = elementName;
@@ -76,6 +90,8 @@ public class Element : MonoBehaviour, IComparable
 
 
     //testing IComparable
+    /// <summary></summary>
+    /// <param name="obj"></param>
     public int CompareTo(object obj)
     {
         return AtomicNumber.CompareTo(obj);
